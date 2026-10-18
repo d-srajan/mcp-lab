@@ -1,0 +1,30 @@
+{
+  "_comment": "Servers the agent connects to. stdio servers: command + args (relative paths resolve from the repo root; 'python' means this venv's Python). Remote servers: url. Flip 'enabled' to try others.",
+  "servers": {
+    "toolbox": {
+      "command": "python",
+      "args": ["02_sdk/server.py"]
+    },
+    "raw": {
+      "enabled": false,
+      "command": "python",
+      "args": ["01_raw/server.py"]
+    },
+    "http": {
+      "enabled": false,
+      "url": "http://127.0.0.1:8000/mcp"
+    },
+    "filesystem": {
+      "enabled": false,
+      "_comment": "Official reference server from github.com/modelcontextprotocol/servers. Needs Node (npx).",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./sandbox"]
+    },
+    "fetch": {
+      "enabled": false,
+      "_comment": "Official reference server: fetch a URL as markdown. Needs uv (uvx).",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  }
+}
